@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    container_name: rpg_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - db_data:/app/data
+    environment:
+      - DATABASE_URL=sqlite:////app/data/rpg.db
+    restart: unless-stopped
+
+volumes:
+  db_data:
